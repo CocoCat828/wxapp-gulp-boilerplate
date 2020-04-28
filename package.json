@@ -42,6 +42,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser": "^1.2.0",
     "minimist": "^1.2.5",
+    "nodemon": "^2.0.3",
     "postcss-font-base64": "^1.0.5",
     "postcss-px2rpx": "^0.0.4",
     "stream-combiner2": "^1.1.1",
