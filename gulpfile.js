@@ -27,20 +27,22 @@ const isProd = argv.type === 'prod';
 
 // cloud-functions 处理方法
 const cloudPath = './server/cloudfunction';
+
 function cloudTask() {
-    return gulp 
+    return gulp
         .src(`${cloudPath}/**`)
         .pipe(
-            isProd
-                ? jdists({
-                    trigger: 'prod'
-                })
-                : jdists({
-                    trigger: 'dev'
-                })
+            isProd ?
+            jdists({
+                trigger: 'prod'
+            }) :
+            jdists({
+                trigger: 'dev'
+            })
         )
         .pipe(gulp.dest(`${dist}/cloudfunction`));
 }
+
 function watchCloud() {
     gulp.watch(`${cloudPath}/**`, cloudTask);
 }
@@ -117,8 +119,8 @@ function jsTask() {
 }
 
 function watch() {
-    ['wxml', 'wxss', 'js', 'json', 'wxs'].forEach((v) => {
-        gulp.watch(`${src}/**/*.${v}`, global[`${v}Task`]);
+    ['wxml', 'wxss', 'js', 'json', 'wxs'].forEach((v, i) => {
+        gulp.watch(`${src}/**/*.${v}`, taskArr[i]);
     });
     gulp.watch(`${src}/images/**`, imgTask);
     gulp.watch(`${src}/**/*.scss`, wxssTask);
